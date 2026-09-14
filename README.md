@@ -61,12 +61,16 @@ Podrá consultar productos y promociones, realizar compras online, utilizar el c
 
 ## 🛠️ Tecnologías
 
-| Tecnología | Uso |
-|---|---|
+| **Tecnología** | **Uso** |
+| -------------- | ------- |
 | React | Desarrollo de la interfaz |
 | JavaScript | Lenguaje principal |
-| Node.js | Desarrollo del servidor |
-| Sequelize | Base de datos |
+| Node.js | Entorno del servidor |
+| Express | Desarrollo de la API |
+| Sequelize | ORM para el acceso a datos |
+| PostgreSQL | Motor de base de datos |
+| DBeaver | Administración y consulta de la base de datos |
+| Postman | Prueba de endpoints de la API |
 | Figma | Diseño y prototipado |
 | Git | Control de versiones |
 | GitHub | Gestión del repositorio |
@@ -103,7 +107,9 @@ feature-*
 
 Las funcionalidades se desarrollan en ramas independientes y se integran mediante Pull Requests.
 
-Las ramas `develop` y `main` estarán protegidas para evitar modificaciones directas y requerirán las revisiones correspondientes antes de aceptar cambios.
+Las ramas `develop` y `main` estarán protegidas para evitar modificaciones directas.
+
+Los cambios deberán integrarse mediante Pull Requests y pasar por las revisiones correspondientes antes de ser aceptados.
 
 ## 🎨 Diseño
 
