@@ -211,6 +211,18 @@ Antes de solicitar la integración, se debe comprobar que el código funciona co
 
 ---
 
+## 8.5. Revisión de Pull Requests
+
+Los Pull Requests destinados a `develop` y `main` deberán pasar por una revisión antes de ser integrados.
+
+El repositorio utiliza CODEOWNERS para definir a los responsables de revisión.
+
+Se requiere al menos una aprobación de un Code Owner antes de realizar el merge.
+
+Las aprobaciones pueden quedar invalidadas si se agregan nuevos cambios al Pull Request, por lo que el código deberá volver a ser revisado cuando corresponda.
+
+---
+
 ## 9. Actualizar una rama de trabajo
 
 Si `develop` recibió cambios mientras se estaba trabajando en una funcionalidad:
@@ -256,8 +268,12 @@ La estructura inicial del proyecto será:
 teatime-store/
 │
 ├── .github/
+│   ├── CODEOWNERS
+│   └── pull_request_template.md
+│
 ├── api/
 ├── client/
+│
 ├── docs/
 │   └── git/
 │       └── guia-github.md
@@ -265,8 +281,6 @@ teatime-store/
 ├── .gitignore
 └── README.md
 ```
-
-Las carpetas internas se irán creando a medida que avance el desarrollo.
 
 ---
 
@@ -277,8 +291,11 @@ El proyecto utilizará:
 * React
 * JavaScript
 * Node.js
+* Express
 * Sequelize
-* MySQL Workbench
+* PostgreSQL
+* DBeaver
+* Postman
 * Figma
 * Git
 * GitHub
