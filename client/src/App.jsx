@@ -1,121 +1,75 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { RutaProtegida } from './components/General'
+import {
+  TiendaLayout, Home, Catalogo, DetalleProducto, Promociones, Preguntas, Login, Registro,
+  Perfil, Favoritos, Carrito, Checkout, MisPedidos, DetallePedido, NoEncontrada
+} from './components/Ecommerce'
+import { PosLayout, AperturaCaja, Venta, Cobro, TicketVenta, HistorialVentas, CajaActual, HistorialCaja, DetalleSesionPos, StockPos } from './components/POS'
+import {
+  AdminLayout, Dashboard, Productos, FormularioProducto, Categorias, Sabores, Stock, Pedidos, PedidoAdmin,
+  Ventas, DetalleVentaAdmin, PromocionesAdmin, FormularioPromocion, Usuarios, Cajas, DetalleSesionAdmin, Reportes
+} from './components/Admin'
+
+const cliente = (pagina) => <RutaProtegida roles={['cliente']}>{pagina}</RutaProtegida>
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Routes>
+      {/* ECOMMERCE */}
+      <Route element={<TiendaLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Catalogo />} />
+        <Route path="/products/:id" element={<DetalleProducto />} />
+        <Route path="/promotions" element={<Promociones />} />
+        <Route path="/faq" element={<Preguntas />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registro />} />
+        <Route path="/profile" element={cliente(<Perfil />)} />
+        <Route path="/favorites" element={cliente(<Favoritos />)} />
+        <Route path="/cart" element={cliente(<Carrito />)} />
+        <Route path="/checkout" element={cliente(<Checkout />)} />
+        <Route path="/orders" element={cliente(<MisPedidos />)} />
+        <Route path="/orders/:id" element={cliente(<DetallePedido />)} />
+        <Route path="*" element={<NoEncontrada />} />
+      </Route>
+      <Route path="/pos/login" element={<Navigate to="/login" replace />} />
+      <Route path="/admin/login" element={<Navigate to="/login" replace />} />
 
-      <div className="ticks"></div>
+      {/* POS: exclusivo de vendedores */}
+      <Route path="/pos" element={<RutaProtegida roles={['vendedor']}><PosLayout /></RutaProtegida>}>
+        <Route index element={<Venta />} />
+        <Route path="open" element={<AperturaCaja />} />
+        <Route path="payment" element={<Cobro />} />
+        <Route path="ticket/:id" element={<TicketVenta />} />
+        <Route path="sales" element={<HistorialVentas />} />
+        <Route path="cash" element={<CajaActual />} />
+        <Route path="cash/history" element={<HistorialCaja />} />
+        <Route path="cash/:id" element={<DetalleSesionPos />} />
+        <Route path="stock" element={<StockPos />} />
+      </Route>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* ADMINISTRACIÓN */}
+      <Route path="/admin" element={<RutaProtegida roles={['administrador']}><AdminLayout /></RutaProtegida>}>
+        <Route index element={<Dashboard />} />
+        <Route path="products" element={<Productos />} />
+        <Route path="products/new" element={<FormularioProducto />} />
+        <Route path="products/:id/edit" element={<FormularioProducto />} />
+        <Route path="categories" element={<Categorias />} />
+        <Route path="flavors" element={<Sabores />} />
+        <Route path="stock" element={<Stock />} />
+        <Route path="orders" element={<Pedidos />} />
+        <Route path="orders/:id" element={<PedidoAdmin />} />
+        <Route path="sales" element={<Ventas />} />
+        <Route path="sales/pos/:id" element={<DetalleVentaAdmin />} />
+        <Route path="promotions" element={<PromocionesAdmin />} />
+        <Route path="promotions/new" element={<FormularioPromocion />} />
+        <Route path="promotions/:id/edit" element={<FormularioPromocion />} />
+        <Route path="users" element={<Usuarios />} />
+        <Route path="registers" element={<Cajas />} />
+        <Route path="registers/sessions/:id" element={<DetalleSesionAdmin />} />
+        <Route path="reports" element={<Reportes />} />
+      </Route>
+    </Routes>
   )
 }
 
