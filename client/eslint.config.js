@@ -17,5 +17,11 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // Cargar datos con useEffect y axios es el patrón elegido para el proyecto, igual que en Learnix.
+      'react-hooks/set-state-in-effect': 'off',
+      // Solo afecta la recarga en caliente durante el desarrollo.
+      'react-refresh/only-export-components': 'off',
+    },
   },
 ])
