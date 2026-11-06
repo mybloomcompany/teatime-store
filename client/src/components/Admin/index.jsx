@@ -1,0 +1,5 @@
+export { default as AdminLayout } from './AdminLayout'
+export { default as Dashboard } from './Dashboard'
+export { Productos, FormularioProducto, Categorias, Sabores } from './Catalogo'
+export { Stock, Pedidos, PedidoAdmin, Ventas, DetalleVentaAdmin, Cajas, DetalleSesionAdmin } from './Operaciones'
+export { PromocionesAdmin, FormularioPromocion, Usuarios, Reportes } from './Gestion'
