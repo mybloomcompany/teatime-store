@@ -1,0 +1,6 @@
+export { default as TiendaLayout } from './TiendaLayout'
+export { default as Home } from './Home'
+export { default as Catalogo } from './Catalogo'
+export { default as DetalleProducto } from './DetalleProducto'
+export { Login, Registro, Perfil, Favoritos, Promociones, Preguntas, NoEncontrada } from './Paginas'
+export { Carrito, Checkout, MisPedidos, DetallePedido } from './Compra'
