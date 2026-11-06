@@ -36,9 +36,12 @@ feature/products
 feature/cart
 feature/stock
 feature/sales
+feature/pos
 feature/admin
 feature/database
 ```
+
+Las ramas deben representar una funcionalidad o bloque de trabajo concreto. Se recomienda evitar utilizar una única rama para desarrollar un módulo completo si este contiene varias funcionalidades independientes.
 
 ---
 
@@ -153,11 +156,11 @@ chore: actualizar dependencias
 
 Los commits deben:
 
-* Describir claramente el cambio realizado.
-* Ser relativamente pequeños y específicos.
-* Evitar mensajes genéricos como `cambios`, `arreglos` o `update`.
-* No mezclar funcionalidades completamente diferentes en un mismo commit.
-* Realizarse después de comprobar que los cambios funcionan.
+- Describir claramente el cambio realizado.
+- Ser relativamente pequeños y específicos.
+- Evitar mensajes genéricos como `cambios`, `arreglos` o `update`.
+- No mezclar funcionalidades completamente diferentes en un mismo commit.
+- Realizarse después de comprobar que los cambios funcionan.
 
 Ejemplo correcto:
 
@@ -202,16 +205,16 @@ develop
 
 El Pull Request debe explicar:
 
-* Qué se hizo.
-* Por qué se hizo.
-* Qué se probó.
-* Si existe algún aspecto pendiente.
+- Qué se hizo.
+- Por qué se hizo.
+- Qué se probó.
+- Si existe algún aspecto pendiente.
 
 Antes de solicitar la integración, se debe comprobar que el código funciona correctamente.
 
 ---
 
-## 8.5. Revisión de Pull Requests
+## 9. Revisión de Pull Requests
 
 Los Pull Requests destinados a `develop` y `main` deberán pasar por una revisión antes de ser integrados.
 
@@ -223,7 +226,7 @@ Las aprobaciones pueden quedar invalidadas si se agregan nuevos cambios al Pull 
 
 ---
 
-## 9. Actualizar una rama de trabajo
+## 10. Actualizar una rama de trabajo
 
 Si `develop` recibió cambios mientras se estaba trabajando en una funcionalidad:
 
@@ -236,7 +239,7 @@ Luego se puede actualizar la rama de trabajo según la estrategia acordada por e
 
 ---
 
-## 10. No trabajar directamente sobre `main`
+## 11. No trabajar directamente sobre `main`
 
 No se deben realizar cambios directamente sobre `main`.
 
@@ -246,21 +249,21 @@ El desarrollo se realiza en ramas `feature/*` y posteriormente se integra en `de
 
 ---
 
-## 11. Antes de realizar un Pull Request
+## 12. Antes de realizar un Pull Request
 
 Comprobar:
 
-* [ ] El código funciona.
-* [ ] La funcionalidad fue probada.
-* [ ] No hay archivos innecesarios.
-* [ ] No se subieron contraseñas, claves o archivos `.env`.
-* [ ] El commit tiene un mensaje descriptivo.
-* [ ] La rama corresponde a la funcionalidad desarrollada.
-* [ ] La documentación fue actualizada si era necesario.
+- [ ] El código funciona.
+- [ ] La funcionalidad fue probada.
+- [ ] No hay archivos innecesarios.
+- [ ] No se subieron contraseñas, claves o archivos `.env`.
+- [ ] El commit tiene un mensaje descriptivo.
+- [ ] La rama corresponde a la funcionalidad desarrollada.
+- [ ] La documentación fue actualizada si era necesario.
 
 ---
 
-## 12. Estructura general del repositorio
+## 13. Estructura general del repositorio
 
 La estructura inicial del proyecto será:
 
@@ -273,10 +276,10 @@ teatime-store/
 │
 ├── api/
 ├── client/
-│
 ├── docs/
 │   └── git/
 │       └── guia-github.md
+├── sql/
 │
 ├── .gitignore
 └── README.md
@@ -284,32 +287,32 @@ teatime-store/
 
 ---
 
-## 13. Tecnologías principales
+## 14. Tecnologías principales
 
 El proyecto utilizará:
 
-* React
-* JavaScript
-* Node.js
-* Express
-* Sequelize
-* PostgreSQL
-* DBeaver
-* Postman
-* Figma
-* Git
-* GitHub
+- React
+- JavaScript
+- Node.js
+- Express
+- Sequelize
+- PostgreSQL
+- DBeaver
+- Postman
+- Figma
+- Git
+- GitHub
 
 ---
 
-## 14. Equipo
+## 15. Equipo
 
 Proyecto desarrollado por:
 
-* Matías
-* Milagros
-* Yuriel
+- Matías
+- Milagros
+- Yuriel
 
 **MYBLOOM — TeaTime**
 
-Sistema web de ecommerce y gestión administrativa desarrollado para TeaTime Store.
+Sistema web de **ecommerce, punto de venta y gestión administrativa** desarrollado para TeaTime Store.
